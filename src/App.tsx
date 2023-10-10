@@ -3,7 +3,41 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
-import ProTip from './ProTip';
+
+import Project from './types/ProjectType';
+
+import {
+  project1,
+  project2,
+  project3,
+  project4
+} from './db/dbDefult'
+import HomePage from './pages/HomePage';
+
+
+
+
+export default function App() {
+const [myProjects , setMyProjects] = React.useState<Project[]>([project1, project2, project3, project4]);
+
+
+  return (
+    <Container maxWidth="lg">
+      <Box sx={{ my: 3 }}>
+        <Typography  variant='h1'>
+          My projcts 
+        </Typography>
+        <HomePage Projects={myProjects} setProjects={setMyProjects} />
+
+
+        <Copyright />
+      </Box>
+    </Container>
+  );
+}
+
+
+
 
 function Copyright() {
   return (
@@ -14,19 +48,5 @@ function Copyright() {
       </Link>{' '}
       {new Date().getFullYear()}.
     </Typography>
-  );
-}
-
-export default function App() {
-  return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Material UI Vite.js example in TypeScript
-        </Typography>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
   );
 }
