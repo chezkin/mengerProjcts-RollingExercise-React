@@ -12,28 +12,24 @@ import Project from '../types/ProjectType';
 type Props = {
     Projects: Project[],
     setProjects: React.Dispatch<React.SetStateAction<Project[]>>,
-    setValue: React.Dispatch<React.SetStateAction<number>>,
-    value: number 
 }
 
 
 
 
 const TabsMenu = (props: Props) => {
-    const navigate = useNavigate();
-    const handleTabClick = (projectName : string) => {
-        navigate(`/${projectName.replace(/ /g, '-')}`)
-        // chengeUrl(`${projectName.replace(/ /g, '-')}`)
-    } 
+    const [value, setValue] = React.useState<number | null>(null);
 
+    const navigate = useNavigate();
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-        props.setValue(newValue);
+        setValue(newValue);
+        navigate(`/${props.Projects[newValue].name.replace(/ /g, '-')}`);
     };
 
     return (
         <Box >
             <Tabs
-               value={props.value}
+               value={value}
                 onChange={handleChange}
                 variant="scrollable"
                 scrollButtons="auto"
@@ -41,16 +37,12 @@ const TabsMenu = (props: Props) => {
             >
                 {props.Projects.map((project, index) => {
                     return (
-                        <>
-                        <link href={`http://localhost:5173/${project.name.replace(/ /g, '-')}`}></link>
                         <Tab
                         key={index}
                         label={project.name}
                         value={index}
-                        onClick={() => handleTabClick(project.name)}
                         />
-                        </>
-                        
+                          
                     )
                 })}
             </Tabs>

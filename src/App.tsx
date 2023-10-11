@@ -12,7 +12,7 @@ import {
   project3,
   project4
 } from './db/dbDefult'
-import HomePage from './pages/HomePage';
+import RouterTabs from './router/Router';
 
 
 
@@ -27,9 +27,7 @@ const [myProjects , setMyProjects] = React.useState<Project[]>([project1, projec
         <Typography  variant='h1'>
           My projcts 
         </Typography>
-        <HomePage Projects={myProjects} setProjects={setMyProjects} />
-
-
+        <RouterTabs Projects={myProjects} setProjects={setMyProjects}/>
         <Copyright />
       </Box>
     </Container>
@@ -43,7 +41,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="http://localhost:5173/">
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}.

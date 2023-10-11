@@ -3,8 +3,10 @@ import Project from '../types/ProjectType';
 import TabsMenu from '../components/TabsMenu';
 import Typography from '@mui/material/Typography';
 
+import { Outlet } from "react-router-dom";
 
-import RouterTabs from '../router/RouterTabs';
+
+
 import CardProject from '../components/CardProject';
 
 
@@ -14,24 +16,13 @@ type Props = {
 }
 
 const HomePage = (props: Props) => {
-    const [value, setValue] = React.useState(-1);
-    // {addTOrouter.push(props.Projects.map((project) => {
-    //     {
-    //         path: '/',
-    //         element: <SelectProject />,
-    //         errorElement: <ErrorPage />,
-    //     }
-    // }
-
-    // ))
-    // }
 
 
     return (<>
-        <TabsMenu Projects={props.Projects} setProjects={props.setProjects} setValue={setValue} value={value} />
-        {value >= 0 && <Typography>{props.Projects[value].name}</Typography>}
-        <RouterTabs Projects={props.Projects}/>
+       
+        <TabsMenu Projects={props.Projects} setProjects={props.setProjects} />
 
+        <Outlet/>
     </>
 
     )
