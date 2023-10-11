@@ -17,7 +17,7 @@ type Props = {
 const RouterTabs = (props: Props) => {
     // const [pojectRoutes , setPojectRoutes]
     const addTOrouter = [{
-        path: '/Select',
+        path: '',
         element: <SelectProject />,
         errorElement: <ErrorPage />,
     },]

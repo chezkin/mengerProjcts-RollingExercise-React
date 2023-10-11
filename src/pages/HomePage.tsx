@@ -1,13 +1,13 @@
 import React from 'react'
 import Project from '../types/ProjectType';
 import TabsMenu from '../components/TabsMenu';
-import Typography from '@mui/material/Typography';
+import {Typography, Box, Button, IconButton} from '@mui/material';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 import { Outlet } from "react-router-dom";
+import AddProjectBtn from '../components/AddProjectBtn';
 
 
-
-import CardProject from '../components/CardProject';
 
 
 type Props = {
@@ -16,11 +16,14 @@ type Props = {
 }
 
 const HomePage = (props: Props) => {
+  
 
 
     return (<>
-       
+        <Box sx={{display: 'flex'}}>
         <TabsMenu Projects={props.Projects} setProjects={props.setProjects} />
+        <AddProjectBtn Projects={props.Projects} setProjects={props.setProjects}/>
+        </Box>
 
         <Outlet/>
     </>

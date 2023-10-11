@@ -23,7 +23,7 @@ const [myProjects , setMyProjects] = React.useState<Project[]>([project1, projec
 
   return (
     <Container maxWidth="lg">
-      <Box sx={{ my: 3 }}>
+      <Box sx={{ my: 3 , display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
         <Typography  variant='h1'>
           My projcts 
         </Typography>

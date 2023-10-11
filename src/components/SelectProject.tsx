@@ -5,7 +5,7 @@ type Props = {}
 
 const SelectProject = (props: Props) => {
   return (
-    <Typography variant='h2'>Select Project</Typography>
+    <Typography variant='h2'>Please Select a Project</Typography>
   )
 }
 
