@@ -1,11 +1,12 @@
 import React, { useRef } from 'react';
 import {Typography, Box, Button, IconButton, Modal, TextField} from '@mui/material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-import Project from '../types/ProjectType';
+
+import type { RootState } from '../store'
+import { useSelector, useDispatch } from 'react-redux'
+import { createNewProject} from '../utils/projectsSlice'
 
 type Props = {
-    Projects: Project[],
-    setProjects: React.Dispatch<React.SetStateAction<Project[]>>
 }
 
 const style = {
@@ -21,17 +22,15 @@ const style = {
   };
 
 const AddProjectBtn = (props: Props) => {
+  const dispatch = useDispatch()
+  const projects = useSelector((state: RootState) => state.projects.value);
     const [open, setOpen] = React.useState(false);
-    const newProject = {
-        name: '',
-        tasks: []
-    }
+
     let inputNewProjectName = useRef('');
+
     const handlClickCreatProject = () => {
-        newProject.name = inputNewProjectName.current
-        const projects = [...props.Projects , newProject]
-        props.setProjects(projects);
-        handleClose()
+      dispatch(createNewProject(inputNewProjectName.current));
+      handleClose()   
     }
 
     const handleOpen = () => setOpen(true);

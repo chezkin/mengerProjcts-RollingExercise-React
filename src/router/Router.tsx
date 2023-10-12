@@ -9,20 +9,23 @@ import Project from "../types/ProjectType";
 import HomePage from "../pages/HomePage";
 
 
+import type { RootState } from '../store'
+import { useSelector, useDispatch } from 'react-redux'
+
+
 type Props = {
-    Projects: Project[]
-    setProjects: React.Dispatch<React.SetStateAction<Project[]>>
+    
 }
 
 const RouterTabs = (props: Props) => {
-    // const [pojectRoutes , setPojectRoutes]
+    const projects = useSelector((state: RootState) => state.projects.value);
     const addTOrouter = [{
         path: '',
         element: <SelectProject />,
         errorElement: <ErrorPage />,
     },]
 
-    props.Projects.forEach((project, index) => {
+    projects.forEach((project, index) => {
         addTOrouter.push({
             path: `/${project.name.replace(/ /g, '-')}`, // You might want to use a unique identifier for the path
             element: <CardProject project={project} />,
@@ -33,11 +36,10 @@ const RouterTabs = (props: Props) => {
     const router = createBrowserRouter([
         {
             path: '/',
-            element: <HomePage Projects={props.Projects} setProjects={props.setProjects} />,
+            element: <HomePage />,
             errorElement: <ErrorPage />,
             children:
                 addTOrouter
-
         }]
     );
     return (

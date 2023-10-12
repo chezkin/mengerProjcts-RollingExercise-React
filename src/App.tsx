@@ -14,6 +14,8 @@ import {
 } from './db/dbDefult'
 import RouterTabs from './router/Router';
 
+import { store } from './store';
+import { Provider } from 'react-redux';
 
 
 
@@ -27,7 +29,9 @@ const [myProjects , setMyProjects] = React.useState<Project[]>([project1, projec
         <Typography  variant='h1'>
           My projcts 
         </Typography>
+        <Provider store={store}>
         <RouterTabs Projects={myProjects} setProjects={setMyProjects}/>
+        </Provider>
         <Copyright />
       </Box>
     </Container>
