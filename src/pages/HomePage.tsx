@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Project from '../types/ProjectType';
 import TabsMenu from '../components/TabsMenu';
 import {Typography, Box, Button, IconButton} from '@mui/material';
@@ -12,10 +12,11 @@ type Props = {
 
 const HomePage = (props: Props) => {
 
+
     return (<>
         <Box sx={{display: 'flex'}}>
         <TabsMenu  />
-        <AddProjectBtn />
+        <AddProjectBtn  />
         </Box>
 
         <Outlet/>

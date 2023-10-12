@@ -18,17 +18,25 @@ type Props = {
 }
 
 const RouterTabs = (props: Props) => {
-    const projects = useSelector((state: RootState) => state.projects.value);
+    const projects = useSelector((state: RootState) => state.projects.Projects);
     const addTOrouter = [{
         path: '',
         element: <SelectProject />,
         errorElement: <ErrorPage />,
     },]
 
-    projects.forEach((project, index) => {
+    projects.forEach((project) => {
         addTOrouter.push({
-            path: `/${project.name.replace(/ /g, '-')}`, // You might want to use a unique identifier for the path
-            element: <CardProject project={project} />,
+            path: `/:name/`, 
+            element: <CardProject  />,
+            errorElement: <ErrorPage />,
+        });
+    });
+
+    projects.forEach((project) => {
+        addTOrouter.push({
+            path: `/:name/:id`, 
+            element: <CardProject  />,
             errorElement: <ErrorPage />,
         });
     });

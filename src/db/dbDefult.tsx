@@ -18,6 +18,7 @@ export const project1: Project = {
             description: [{ description: "Add new blog posts" }],
             status: "Pending",
         },
+        
     ],
 };
 

@@ -20,20 +20,26 @@ import { Provider } from 'react-redux';
 
 
 export default function App() {
-const [myProjects , setMyProjects] = React.useState<Project[]>([project1, project2, project3, project4]);
+
 
 
   return (
-    <Container maxWidth="lg">
-      <Box sx={{ my: 3 , display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
-        <Typography  variant='h1'>
-          My projcts 
+    <Container sx={
+      {
+        height: '100vh', display: 'flex', flexDirection: 'column',
+         justifyContent: 'space-between', paddingBottom: '3%',
+      }
+    }
+      fixed maxWidth="lg">
+      <Box sx={{ my: 3, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <Typography variant='h3'>
+          My projcts
         </Typography>
         <Provider store={store}>
-        <RouterTabs Projects={myProjects} setProjects={setMyProjects}/>
+          <RouterTabs />
         </Provider>
-        <Copyright />
       </Box>
+      <Copyright />
     </Container>
   );
 }

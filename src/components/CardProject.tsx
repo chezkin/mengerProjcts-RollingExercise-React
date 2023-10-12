@@ -1,26 +1,42 @@
 import React from 'react';
 import Project from '../types/ProjectType';
 
+import { useParams } from 'react-router-dom'
+
 import type { RootState } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
 
 
-import { Box, Typography } from '@mui/material';
+import { Button, Box, Typography } from '@mui/material';
+import TasksTable from './TasksTable';
+
 type Props = {
-  project: Project
 }
 
 const CardProject = (props: Props) => {
 
-  const project = props.project
+  const projects = useSelector((state: RootState) => state.projects.Projects)
+  const params = useParams();
+  let projectIndex = 0
+  if (params.name && !params.id){
+    const projectNameUnderScore : string = params.name
+    const projectName : string = projectNameUnderScore.split('-').join(' ')
+    projectIndex = projects.findIndex((p)=>p.name === projectName);
+  }
+  if (params.name && params.id){
+    projectIndex = Number(params.id)
+  }
+  
   return (
     <Box>
       <Typography variant='h3'>
-        {project.name}
+       
+        {projects[projectIndex].name}
+      
       </Typography>
-
-
-
+      <Box>
+        <TasksTable tasks={projects[projectIndex].tasks} />
+      </Box>
     </Box>
   )
 }

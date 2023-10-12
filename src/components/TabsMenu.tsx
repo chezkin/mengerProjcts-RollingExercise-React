@@ -8,23 +8,27 @@ import { useNavigate } from 'react-router-dom';
 import type { RootState } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { setIndexProject } from '../utils/indexProjectSlice';
+
 
 type Props = {
+
 }
 const TabsMenu = (props: Props) => {
-    const projects = useSelector((state: RootState) => state.projects.value)
-    const [value, setValue] = React.useState<number | boolean>(false);
+    const projects = useSelector((state: RootState) => state.projects.Projects)
+    const indexProject = useSelector((state: RootState) => state.indexProject.indexProject)
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-        setValue(newValue);
-        navigate(`/${projects[newValue].name.replace(/ /g, '-')}`);
+        dispatch(setIndexProject(newValue));
+        navigate(`${projects[newValue].name.replace(/ /g, '-')}/${newValue}`);
     };
 
     return (
         <Box >
             <Tabs
-               value={value}
+               value={indexProject}
                 onChange={handleChange}
                 variant="scrollable"
                 scrollButtons="auto"

@@ -1,12 +1,17 @@
 import React, { useRef } from 'react';
 import {Typography, Box, Button, IconButton, Modal, TextField} from '@mui/material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import { useNavigate } from 'react-router-dom';
 
 import type { RootState } from '../store'
 import { useSelector, useDispatch } from 'react-redux'
 import { createNewProject} from '../utils/projectsSlice'
 
+import { setIndexProject } from '../utils/indexProjectSlice';
+
+
 type Props = {
+ 
 }
 
 const style = {
@@ -23,14 +28,18 @@ const style = {
 
 const AddProjectBtn = (props: Props) => {
   const dispatch = useDispatch()
-  const projects = useSelector((state: RootState) => state.projects.value);
+  const indexProject = useSelector((state: RootState) => state.indexProject.indexProject)
+  const projects = useSelector((state: RootState) => state.projects.Projects);
     const [open, setOpen] = React.useState(false);
 
     let inputNewProjectName = useRef('');
 
+    const navigate = useNavigate();
     const handlClickCreatProject = () => {
       dispatch(createNewProject(inputNewProjectName.current));
-      handleClose()   
+      handleClose();
+      dispatch(setIndexProject(projects.length));
+      navigate(`${inputNewProjectName.current.replace(/ /g, '-')}/${projects.length}`);
     }
 
     const handleOpen = () => setOpen(true);

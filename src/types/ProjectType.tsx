@@ -3,7 +3,7 @@ type Instruction = {
     description: string;
 };
 
- type Task = {
+export type Task = {
     name: string;
     dueDate: string;
     description: Instruction[];

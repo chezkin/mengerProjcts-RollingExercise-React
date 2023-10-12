@@ -10,15 +10,15 @@ import {
 } from '../db/dbDefult'
 
 export interface ProjectState {
-  value: Project[];
+  Projects: Project[];
 }
 
 const initialState: ProjectState = {
-  value: [project1, project2, project3, project4],
+  Projects: [project1, project2, project3, project4],
 }
 
-export const counterSlice = createSlice({
-  name: 'counter',
+export const ProjectsSlice = createSlice({
+  name: 'indexProject',
   initialState,
   reducers: {
     createNewProject: (state, action: PayloadAction<string>) => {
@@ -26,13 +26,13 @@ export const counterSlice = createSlice({
         name: action.payload,
         tasks: []
       }
-      const projects = [...state.value , newProject]
-      state.value = projects
+      const projects = [...state.Projects , newProject]
+      state.Projects = projects
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { createNewProject } = counterSlice.actions
+export const { createNewProject } = ProjectsSlice.actions
 
-export default counterSlice.reducer
+export default ProjectsSlice.reducer
