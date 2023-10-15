@@ -11,7 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "latest",
+    "@mui/icons-material": "^5.14.13",
     "@mui/lab": "^5.0.0-alpha.147",
     "@mui/material": "^5.14.13",
     "@reduxjs/toolkit": "^1.9.7",
@@ -24,7 +24,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
-    "typescript": "latest",
+    "typescript": "^5.2.2",
     "vite": "latest"
   }
 }

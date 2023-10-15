@@ -45,7 +45,7 @@ const AddProjectBtn = (props: Props) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
   return (
-    <>
+  <>
     <IconButton onClick={handleOpen} sx={{
             '&.MuiButtonBase-root':{
                 color: 'gray',
@@ -77,7 +77,7 @@ const AddProjectBtn = (props: Props) => {
           </Box>
         </Box>
       </Modal>
-    </>
+      </>
   )
 }
 
